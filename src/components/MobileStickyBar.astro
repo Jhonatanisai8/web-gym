@@ -1,0 +1,29 @@
+---
+import { MessageCircle, Zap } from 'lucide-astro';
+---
+
+<div class="fixed bottom-0 inset-x-0 z-40 sm:hidden p-3 bg-brand-dark/95 backdrop-blur-xl border-t border-brand-emerald/40 shadow-2xl pb-safe">
+  <div class="grid grid-cols-2 gap-2.5">
+    
+    <!-- WhatsApp Action -->
+    <a
+      href="https://wa.me/51999999999?text=Hola,%20deseo%20consultar%20por%20membres%C3%ADas%20en%20IS1998%20Athletic%20Club"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center gap-2 py-3 px-3 rounded-lg bg-brand-surface border border-brand-emerald/80 text-zinc-100 font-bold text-xs uppercase tracking-wider hover:border-brand-volt transition-all duration-200 active:scale-[0.98]"
+    >
+      <MessageCircle class="w-4 h-4 text-brand-volt" />
+      <span>WhatsApp</span>
+    </a>
+
+    <!-- View Plans / Free Pass Action -->
+    <a
+      href="#membresias"
+      class="inline-flex items-center justify-center gap-1.5 py-3 px-3 rounded-lg bg-brand-volt text-brand-dark font-extrabold text-xs uppercase tracking-wider shadow-volt-glow hover:bg-white hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98]"
+    >
+      <Zap class="w-4 h-4 fill-current" />
+      <span>Ver Planes</span>
+    </a>
+
+  </div>
+</div>

@@ -1,0 +1,150 @@
+---
+import { Dumbbell, Brain, Users, Award, ShoppingBag, Flame, ArrowRight } from 'lucide-astro';
+
+const services = [
+  {
+    id: 'variedad-maquinas',
+    title: 'Variedad de Máquinas',
+    badge: 'Salas de Musculación',
+    description: 'Salas de musculación de última generación, completamente equipadas para cada grupo muscular con biomecánica de precisión.',
+    image: '/images/servicio-maquinas.webp',
+    icon: Dumbbell,
+  },
+  {
+    id: 'psicologia-deportiva',
+    title: 'Psicología Deportiva',
+    badge: 'Enfoque Mental',
+    description: '“Entrena tu mente y tu cuerpo seguirá el camino.” Fortalecimiento mental, concentración y motivación para superar cualquier límite.',
+    image: '/images/servicio-psicologia.webp',
+    icon: Brain,
+  },
+  {
+    id: 'clases-grupales',
+    title: 'Clases Grupales',
+    badge: 'Comunidad & Energía',
+    description: 'Cada paso que das en la pista es un paso hacia tu mejor versión. Sesiones dinámicas de alta intensidad guiadas por instructores élite.',
+    image: '/images/servicio-clases.webp',
+    icon: Users,
+  },
+  {
+    id: 'entrenadores-certificados',
+    title: 'Entrenadores Certificados',
+    badge: 'Asesoría Personal',
+    description: 'Entrena con confianza. Nuestros entrenadores están certificados para llevarte al siguiente nivel con planes a tu medida.',
+    image: '/images/servicio-entrenadores.webp',
+    icon: Award,
+  },
+  {
+    id: 'tienda-suplementos',
+    title: 'Tienda de Suplementos',
+    badge: 'Nutrición Premium',
+    description: 'Potencia tus resultados. Nosotros ponemos los suplementos de alta calidad, tú pones el esfuerzo y la disciplina.',
+    image: '/images/servicio-suplementos.webp',
+    icon: ShoppingBag,
+  },
+  {
+    id: 'sauna',
+    title: 'Sauna & Recuperación',
+    badge: 'Cámara Seca',
+    description: 'Relájate y recarga energía en nuestro Sauna. Nuestra cámara seca te ofrece los siguientes beneficios: elimina toxinas, revitaliza tu piel, mejora tu circulación y libera el stress.',
+    image: '/images/servicio-sauna.webp',
+    icon: Flame,
+  },
+];
+---
+
+<section id="servicios" class="py-24 bg-brand-dark relative border-t border-brand-emerald/20 scroll-mt-20">
+  <!-- Anchor for compatibility with #zonas links -->
+  <div id="zonas" class="absolute -top-24"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16 sm:mb-20" data-reveal>
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white uppercase tracking-tight leading-tight">
+        Nuestros <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-volt to-emerald-400">Servicios</span>
+      </h2>
+    </div>
+
+    <!-- Alternating Staircase / Zig-Zag Showcase -->
+    <div class="flex flex-col gap-12 sm:gap-16 lg:gap-20">
+      {services.map((service, idx) => {
+        const IconComponent = service.icon;
+        const isReversed = idx % 2 === 1;
+        const stepNumber = String(idx + 1).padStart(2, '0');
+
+        return (
+          <div
+            class="group relative rounded-3xl bg-brand-surface/75 border border-brand-emerald/30 hover:border-brand-volt/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6),0_0_30px_rgba(199,255,58,0.06)] overflow-hidden shadow-2xl p-6 sm:p-8 lg:p-10"
+            data-reveal
+          >
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              
+              <!-- Image Column -->
+              <div class={`lg:col-span-6 ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div class="relative h-64 sm:h-80 lg:h-96 w-full rounded-2xl overflow-hidden border border-zinc-800 shadow-lg">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    class="w-full h-full object-cover filter contrast-105 brightness-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent"></div>
+                  
+                  <!-- Badge & Icon inside the image -->
+                  <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brand-dark/85 backdrop-blur-md border border-brand-emerald/70 text-xs font-mono font-semibold text-brand-volt shadow-md">
+                      <span class="w-1.5 h-1.5 rounded-full bg-brand-volt animate-pulse"></span>
+                      {service.badge}
+                    </span>
+
+                    <div class="w-10 h-10 rounded-xl bg-brand-dark/90 backdrop-blur-md border border-brand-volt/30 text-brand-volt flex items-center justify-center shadow-md group-hover:bg-brand-volt group-hover:text-brand-dark transition-colors duration-300">
+                      <IconComponent class="w-5 h-5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content Column -->
+              <div class={`lg:col-span-6 ${isReversed ? 'lg:order-1' : 'lg:order-2'} flex flex-col justify-center`}>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-xs font-bold text-brand-volt tracking-widest px-2.5 py-1 rounded bg-brand-volt/10 border border-brand-volt/30">
+                    {stepNumber}
+                  </span>
+                  <span class="text-xs font-mono uppercase tracking-widest text-zinc-400">
+                    {service.badge}
+                  </span>
+                </div>
+
+                <h3 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight mb-4 group-hover:text-brand-volt transition-colors">
+                  {service.title}
+                </h3>
+
+                <p class="text-zinc-300 text-base sm:text-lg leading-relaxed font-light mb-8">
+                  {service.description}
+                </p>
+
+                <div>
+                  <a
+                    href="#membresias"
+                    class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-brand-surface border border-brand-volt/40 text-brand-volt hover:bg-brand-volt hover:text-brand-dark font-bold text-xs uppercase tracking-wider transition-all duration-200 ease-out shadow-md hover:shadow-volt-glow transform hover:-translate-y-0.5 active:scale-[0.98] group-hover:border-brand-volt"
+                  >
+                    <span>Consultar Planes</span>
+                    <ArrowRight class="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-200" />
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Subtle hover bottom glow line -->
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-volt/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</section>

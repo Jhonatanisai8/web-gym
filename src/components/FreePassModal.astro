@@ -1,0 +1,306 @@
+---
+import { X, Flame, ShieldCheck, Check, Sparkles, Send, ArrowRight, Loader2 } from 'lucide-astro';
+---
+
+<div
+  id="free-pass-modal"
+  class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-dark/85 backdrop-blur-md overflow-y-auto opacity-0 pointer-events-none transition-opacity duration-250 ease-out"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  <!-- Modal Card -->
+  <div
+    id="free-pass-card"
+    class="relative w-full max-w-lg rounded-2xl bg-brand-surface border border-brand-emerald/80 shadow-2xl overflow-hidden my-8 transform scale-95 opacity-0 translate-y-3 transition-all duration-300 ease-out"
+  >
+    
+    <!-- Header banner -->
+    <div class="p-6 pb-5 bg-gradient-to-r from-brand-emerald to-brand-surface border-b border-brand-emerald flex items-start justify-between">
+      <div>
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-dark/80 text-[10px] font-mono text-brand-volt font-bold uppercase tracking-wider mb-2">
+          <Flame class="w-3.5 h-3.5 fill-current" />
+          Acceso Exclusivo · Sin Costo
+        </div>
+        <h3 id="modal-title" class="font-display font-extrabold text-2xl text-white uppercase tracking-tight">
+          Reclama Tu Pase de 1 Día
+        </h3>
+        <p class="text-xs text-zinc-300 mt-1">
+          Vive la experiencia de entrenar sin esperas, con equipamiento de élite y acceso a sauna.
+        </p>
+      </div>
+      <button
+        type="button"
+        id="close-pass-modal-btn"
+        class="text-zinc-400 hover:text-white p-1.5 rounded-lg bg-brand-dark/50 border border-zinc-700/60 hover:border-zinc-500 hover:bg-brand-surface transition-all duration-200 active:scale-95 focus:outline-none focus:ring-1 focus:ring-brand-volt"
+        aria-label="Cerrar modal"
+      >
+        <X class="w-5 h-5" />
+      </button>
+    </div>
+
+    <!-- Form Section -->
+    <div id="modal-form-container" class="p-6 sm:p-8 transition-all duration-200 ease-out">
+      <form id="free-pass-form" class="space-y-4">
+        
+        <div>
+          <label for="pass-name" class="block text-xs font-mono uppercase text-zinc-300 font-semibold mb-1">
+            Nombre y Apellido *
+          </label>
+          <input
+            type="text"
+            id="pass-name"
+            name="name"
+            required
+            placeholder="Ej. Rodrigo Morales"
+            class="w-full px-4 py-3 rounded-lg bg-brand-dark border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-brand-volt focus:ring-1 focus:ring-brand-volt/50 transition-all duration-200"
+          />
+        </div>
+
+        <div>
+          <label for="pass-phone" class="block text-xs font-mono uppercase text-zinc-300 font-semibold mb-1">
+            Teléfono WhatsApp *
+          </label>
+          <input
+            type="tel"
+            id="pass-phone"
+            name="phone"
+            required
+            placeholder="Ej. +51 987 654 321"
+            class="w-full px-4 py-3 rounded-lg bg-brand-dark border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-brand-volt focus:ring-1 focus:ring-brand-volt/50 transition-all duration-200"
+          />
+          <span class="text-[10px] text-zinc-500 mt-0.5 block">Te enviaremos tu código de acceso QR por WhatsApp.</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="pass-location" class="block text-xs font-mono uppercase text-zinc-300 font-semibold mb-1">
+              Sede *
+            </label>
+            <select
+              id="pass-location"
+              name="location"
+              class="w-full px-3 py-3 rounded-lg bg-brand-dark border border-zinc-800 text-sm text-white focus:outline-none focus:border-brand-volt focus:ring-1 focus:ring-brand-volt/50 transition-all duration-200 cursor-pointer"
+            >
+              <option value="San Isidro">Sede Central (San Isidro)</option>
+              <option value="Miraflores">Sede Boutique (Miraflores)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="pass-schedule" class="block text-xs font-mono uppercase text-zinc-300 font-semibold mb-1">
+              Horario Preferido *
+            </label>
+            <select
+              id="pass-schedule"
+              name="schedule"
+              class="w-full px-3 py-3 rounded-lg bg-brand-dark border border-zinc-800 text-sm text-white focus:outline-none focus:border-brand-volt focus:ring-1 focus:ring-brand-volt/50 transition-all duration-200 cursor-pointer"
+            >
+              <option value="Mañana (06:00 - 11:00)">Mañana (06:00 - 11:00)</option>
+              <option value="Mediodía (11:00 - 16:00)">Mediodía (11:00 - 16:00)</option>
+              <option value="Tarde/Noche (16:00 - 22:00)">Tarde/Noche (16:00 - 22:00)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="pass-goal" class="block text-xs font-mono uppercase text-zinc-300 font-semibold mb-1">
+            Objetivo Principal
+          </label>
+          <select
+            id="pass-goal"
+            name="goal"
+            class="w-full px-3 py-3 rounded-lg bg-brand-dark border border-zinc-800 text-sm text-white focus:outline-none focus:border-brand-volt focus:ring-1 focus:ring-brand-volt/50 transition-all duration-200 cursor-pointer"
+          >
+            <option value="Fuerza e Hipertrofia">Fuerza Máxima & Hipertrofia (Pesas Eleiko/Watson)</option>
+            <option value="Rendimiento Atlético / Hyrox">Rendimiento Atlético / Hyrox / Acondicionamiento</option>
+            <option value="Pérdida de Grasa & Salud">Salud Integral & Pérdida de Grasa</option>
+            <option value="Cycling & Clases Grupales">Sound Cycling & Clases Grupales</option>
+            <option value="Recuperación & Longevidad">Recuperación (Sauna Finlandés & Terapia Fría)</option>
+          </select>
+        </div>
+
+        <!-- Trust Checkboxes -->
+        <div class="pt-2">
+          <div class="flex items-center gap-2 text-xs text-zinc-400">
+            <ShieldCheck class="w-4 h-4 text-emerald-400 flex-shrink-0" />
+            <span>Pase 100% gratuito · Válido para 1 día completo · Cero llamadas spam</span>
+          </div>
+        </div>
+
+        <!-- Submit Button with loading state feedback -->
+        <button
+          type="submit"
+          id="free-pass-submit-btn"
+          class="relative w-full mt-4 py-4 px-6 rounded-lg bg-brand-volt text-brand-dark font-extrabold text-xs uppercase tracking-wider hover:bg-white hover:shadow-volt-glow hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-80 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
+        >
+          <span id="btn-submit-content" class="inline-flex items-center gap-2 transition-opacity duration-150">
+            <Send class="w-4 h-4" />
+            <span>Generar Mi Pase de Cortesía</span>
+          </span>
+          <span id="btn-submit-spinner" class="hidden absolute inset-0 items-center justify-center gap-2 font-bold text-xs uppercase tracking-wider">
+            <Loader2 class="w-4 h-4 animate-spin text-brand-dark" />
+            <span>Generando Pase Seguro...</span>
+          </span>
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Success Screen (Hidden by default) -->
+    <div id="modal-success-container" class="hidden p-8 text-center transition-all duration-300 ease-out opacity-0 translate-y-3">
+      <div class="w-16 h-16 rounded-full bg-brand-volt/20 text-brand-volt border-2 border-brand-volt mx-auto flex items-center justify-center mb-5">
+        <Check class="w-8 h-8" />
+      </div>
+      <h4 class="font-display font-black text-2xl text-white uppercase tracking-tight mb-2">
+        ¡Pase de 1 Día Confirmado!
+      </h4>
+      <p class="text-xs text-zinc-300 mb-6 max-w-sm mx-auto">
+        Tu reserva ha sido asignada. Se ha apartado tu cupo para garantizar el aforo controlado de 35 atletas.
+      </p>
+
+      <!-- Digital Pass Card -->
+      <div class="p-5 rounded-xl bg-brand-dark border-2 border-dashed border-brand-emerald text-left max-w-sm mx-auto mb-6">
+        <div class="flex items-center justify-between pb-3 border-b border-zinc-800">
+          <span class="text-[10px] font-mono text-zinc-400 uppercase">Pase Digital No.</span>
+          <span id="confirmed-pass-code" class="text-xs font-mono font-bold text-brand-volt">IS1998-8821</span>
+        </div>
+        <div class="py-3 space-y-1.5 text-xs text-zinc-200">
+          <div>Atleta: <strong id="confirmed-name" class="text-white">Rodrigo Morales</strong></div>
+          <div>Sede: <strong id="confirmed-location" class="text-white">San Isidro</strong></div>
+          <div>Franja: <strong id="confirmed-schedule" class="text-white">Mañana</strong></div>
+        </div>
+        <div class="pt-2 border-t border-zinc-800 text-[10px] text-emerald-400 font-mono">
+          ✓ Acceso libre a Peso Libre, Cycling, Sauna & Toallas
+        </div>
+      </div>
+
+      <!-- Action Button to WhatsApp -->
+      <a
+        id="whatsapp-confirm-link"
+        href="https://wa.me/51999999999"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-lg bg-brand-volt text-brand-dark font-extrabold text-xs uppercase tracking-wider hover:bg-white hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 shadow-volt-glow"
+      >
+        <span>Activar Pase por WhatsApp con 1 Clic</span>
+        <ArrowRight class="w-4 h-4" />
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('free-pass-modal');
+  const card = document.getElementById('free-pass-card');
+  const closeBtn = document.getElementById('close-pass-modal-btn');
+  const form = document.getElementById('free-pass-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('free-pass-submit-btn') as HTMLButtonElement | null;
+  const submitContent = document.getElementById('btn-submit-content');
+  const submitSpinner = document.getElementById('btn-submit-spinner');
+  const formContainer = document.getElementById('modal-form-container');
+  const successContainer = document.getElementById('modal-success-container');
+  const openButtons = document.querySelectorAll('[data-open-pass-modal]');
+
+  // Info fields
+  const confirmedCode = document.getElementById('confirmed-pass-code');
+  const confirmedName = document.getElementById('confirmed-name');
+  const confirmedLocation = document.getElementById('confirmed-location');
+  const confirmedSchedule = document.getElementById('confirmed-schedule');
+  const whatsappLink = document.getElementById('whatsapp-confirm-link') as HTMLAnchorElement | null;
+
+  function openModal() {
+    if (modal && card) {
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      card.classList.remove('scale-95', 'opacity-0', 'translate-y-3');
+      card.classList.add('scale-100', 'opacity-100', 'translate-y-0');
+      document.body.classList.add('overflow-hidden');
+    }
+  }
+
+  function closeModal() {
+    if (modal && card) {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      card.classList.add('scale-95', 'opacity-0', 'translate-y-3');
+      card.classList.remove('scale-100', 'opacity-100', 'translate-y-0');
+      document.body.classList.remove('overflow-hidden');
+    }
+  }
+
+  openButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+
+  // Close when clicking outer backdrop
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('pointer-events-none')) {
+      closeModal();
+    }
+  });
+
+  // Handle Form Submission with smooth loading feedback
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form) return;
+
+    // Trigger visual loading feedback
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitContent) submitContent.classList.add('opacity-0');
+    if (submitSpinner) {
+      submitSpinner.classList.remove('hidden');
+      submitSpinner.classList.add('flex');
+    }
+
+    const formData = new FormData(form);
+    const name = formData.get('name') as string || 'Atleta';
+    const phone = formData.get('phone') as string || '';
+    const location = formData.get('location') as string || 'San Isidro';
+    const schedule = formData.get('schedule') as string || 'Mañana';
+    const goal = formData.get('goal') as string || 'Rendimiento';
+
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    const passCode = `IS1998-${randomNum}`;
+
+    if (confirmedCode) confirmedCode.textContent = passCode;
+    if (confirmedName) confirmedName.textContent = name;
+    if (confirmedLocation) confirmedLocation.textContent = location;
+    if (confirmedSchedule) confirmedSchedule.textContent = schedule;
+
+    if (whatsappLink) {
+      const textMsg = encodeURIComponent(
+        `Hola IS1998 Club! Acabo de registrar mi Pase de 1 Día Gratis (Código: ${passCode}). Mi nombre es ${name}, sede ${location}, horario ${schedule}. Objetivo: ${goal}.`
+      );
+      whatsappLink.href = `https://wa.me/51999999999?text=${textMsg}`;
+    }
+
+    // Natural 350ms transition to success screen without layout shift
+    setTimeout(() => {
+      if (formContainer && successContainer) {
+        formContainer.classList.add('opacity-0', '-translate-y-2');
+        setTimeout(() => {
+          formContainer.classList.add('hidden');
+          successContainer.classList.remove('hidden');
+          requestAnimationFrame(() => {
+            successContainer.classList.remove('opacity-0', 'translate-y-3');
+            successContainer.classList.add('opacity-100', 'translate-y-0');
+          });
+        }, 150);
+      }
+    }, 400);
+  });
+</script>

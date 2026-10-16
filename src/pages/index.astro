@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import BentoZones from '../components/BentoZones.astro';
+import ScheduleSection from '../components/ScheduleSection.astro';
+import PricingMatrix from '../components/PricingMatrix.astro';
+import SocialProof from '../components/SocialProof.astro';
+import LocationsSection from '../components/LocationsSection.astro';
+import FreePassModal from '../components/FreePassModal.astro';
+import Footer from '../components/Footer.astro';
+import MobileStickyBar from '../components/MobileStickyBar.astro';
+---
+
+<Layout
+  title="IS1998 ATHLETICA · Club de Alto Rendimiento & Entrenamiento Boutique"
+  description="Landing oficial de IS1998. Gimnasio boutique de alta gama con biomecánica Eleiko y Watson, aforo controlado a 35 atletas, recovery sauna y crioterapia. Cero aglomeraciones."
+>
+  <!-- Navigation Header -->
+  <Navbar />
+
+  <!-- Main Body Content -->
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <Hero />
+
+    <!-- Bento Grid Facilities & Zones -->
+    <BentoZones />
+
+    <!-- Live Classes & Schedule Matrix -->
+    <ScheduleSection />
+
+    <!-- Transparent Membership Pricing -->
+    <PricingMatrix />
+
+    <!-- Audited Social Proof & Guarantee -->
+    <SocialProof />
+
+    <!-- Strategic Club Locations -->
+    <LocationsSection />
+  </main>
+
+  <!-- Interactive 1-Day Free Pass Modal -->
+  <FreePassModal />
+
+  <!-- Official Footer -->
+  <Footer />
+
+  <!-- Mobile Floating Sticky CTA Bar -->
+  <MobileStickyBar />
+</Layout>

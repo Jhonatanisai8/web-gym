@@ -1,0 +1,137 @@
+---
+import { Instagram, Youtube, Music, Linkedin, BookOpen } from 'lucide-astro';
+---
+
+<footer class="bg-brand-dark border-t border-brand-emerald/30 pt-16 pb-28 sm:pb-16 text-zinc-400 text-xs">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Big Centered Brand Logo Section -->
+    <div class="flex flex-col items-center justify-center text-center pb-14 border-b border-zinc-800">
+      
+      <!-- Big Centered Logo Name -->
+      <a href="#" class="group inline-flex flex-col items-center justify-center text-center mb-5">
+        <span class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-wider text-white uppercase group-hover:text-brand-volt transition-colors">
+          IS1998
+        </span>
+        <span class="text-brand-volt text-xs sm:text-sm font-mono font-bold tracking-[0.3em] uppercase mt-1">
+          ATHLETIC CLUB
+        </span>
+      </a>
+
+      <!-- Centered Tagline -->
+      <p class="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-lg mb-6 font-light">
+        Club de rendimiento deportivo y entrenamiento boutique. Biomecánica Eleiko & Watson, aforo controlado y santuario de contrastes.
+      </p>
+
+      <!-- Centered Social Icons -->
+      <div class="flex items-center justify-center gap-3">
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-10 h-10 rounded-xl bg-brand-surface border border-zinc-800 hover:border-brand-volt hover:text-brand-volt hover:-translate-y-0.5 active:scale-95 flex items-center justify-center text-zinc-400 transition-all duration-200 shadow-sm"
+          aria-label="Instagram"
+        >
+          <Instagram class="w-4 h-4" />
+        </a>
+        <a
+          href="https://youtube.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-10 h-10 rounded-xl bg-brand-surface border border-zinc-800 hover:border-brand-volt hover:text-brand-volt hover:-translate-y-0.5 active:scale-95 flex items-center justify-center text-zinc-400 transition-all duration-200 shadow-sm"
+          aria-label="YouTube"
+        >
+          <Youtube class="w-4 h-4" />
+        </a>
+        <a
+          href="https://spotify.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-10 h-10 rounded-xl bg-brand-surface border border-zinc-800 hover:border-brand-volt hover:text-brand-volt hover:-translate-y-0.5 active:scale-95 flex items-center justify-center text-zinc-400 transition-all duration-200 shadow-sm"
+          aria-label="Spotify Playlists"
+        >
+          <Music class="w-4 h-4" />
+        </a>
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-10 h-10 rounded-xl bg-brand-surface border border-zinc-800 hover:border-brand-volt hover:text-brand-volt hover:-translate-y-0.5 active:scale-95 flex items-center justify-center text-zinc-400 transition-all duration-200 shadow-sm"
+          aria-label="LinkedIn"
+        >
+          <Linkedin class="w-4 h-4" />
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Navigation & Info Columns (Centered Container) -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 max-w-4xl mx-auto gap-10 py-12 border-b border-zinc-800 text-center sm:text-left">
+      
+      <!-- Quick links -->
+      <div class="flex flex-col space-y-2.5 items-center sm:items-start">
+        <h4 class="text-xs font-mono font-bold text-white uppercase tracking-wider mb-2">Explorar</h4>
+        <a href="#experiencia" class="hover:text-brand-volt transition-colors">Experiencia IS1998</a>
+        <a href="#servicios" class="hover:text-brand-volt transition-colors">Nuestros Servicios</a>
+        <a href="#clases" class="hover:text-brand-volt transition-colors">Horarios de Clases</a>
+        <a href="#membresias" class="hover:text-brand-volt transition-colors">Membresías & Precios</a>
+        <a href="#sedes" class="hover:text-brand-volt transition-colors">Sedes Boutique</a>
+      </div>
+
+      <!-- Horarios -->
+      <div class="flex flex-col space-y-2.5 items-center sm:items-start">
+        <h4 class="text-xs font-mono font-bold text-white uppercase tracking-wider mb-2">Horarios de Club</h4>
+        <div>
+          <span class="text-white font-medium block">Lunes a Viernes</span>
+          <span class="text-[11px] text-zinc-400">05:00 - 23:00 hrs</span>
+        </div>
+        <div>
+          <span class="text-white font-medium block">Sábados</span>
+          <span class="text-[11px] text-zinc-400">07:00 - 20:00 hrs</span>
+        </div>
+        <div>
+          <span class="text-white font-medium block">Domingos & Feriados</span>
+          <span class="text-[11px] text-zinc-400">08:00 - 14:00 hrs</span>
+        </div>
+        <div class="pt-2">
+          <span class="text-[10px] font-mono text-brand-volt uppercase font-semibold">Sauna: Continuo</span>
+        </div>
+      </div>
+
+      <!-- Legal & Libro de reclamaciones -->
+      <div class="flex flex-col space-y-3 items-center sm:items-start">
+        <h4 class="text-xs font-mono font-bold text-white uppercase tracking-wider mb-2">Transparencia</h4>
+        <a href="#" class="hover:text-brand-volt transition-colors">Términos del Servicio</a>
+        <a href="#" class="hover:text-brand-volt transition-colors">Política de Privacidad</a>
+        <a href="#" class="hover:text-brand-volt transition-colors">Protocolo de Bioseguridad</a>
+        
+        <div class="pt-2">
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 p-2.5 rounded-lg bg-brand-surface border border-zinc-800 hover:border-brand-emerald text-zinc-300 hover:text-white transition-colors"
+          >
+            <BookOpen class="w-4 h-4 text-brand-volt flex-shrink-0" />
+            <div class="flex flex-col text-left">
+              <span class="text-[11px] font-bold">Libro de Reclamaciones</span>
+              <span class="text-[9px] text-zinc-500 font-mono">Conforme a ley N° 29571</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-400 text-[11px] font-mono">
+      <div>
+        © 2026 IS1998 ATHLETIC CLUB S.A.C. · Todos los derechos reservados.
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Diseñado para alto rendimiento</span>
+        <span class="w-1 h-1 rounded-full bg-brand-volt"></span>
+        <span class="text-zinc-300">Cero permanencias forzadas</span>
+      </div>
+    </div>
+
+  </div>
+</footer>

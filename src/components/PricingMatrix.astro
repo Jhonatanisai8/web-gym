@@ -1,0 +1,267 @@
+---
+import { Check, Zap, Sparkles, MessageSquare, ArrowRight, ShieldCheck, Flame } from 'lucide-astro';
+
+const plans = [
+  {
+    id: 'standard',
+    name: 'Standard Athlete',
+    tagline: 'Para el deportista autónomo que valora el mejor equipamiento sin esperas.',
+    monthlyPrice: 89,
+    quarterlyPrice: 71,
+    popular: false,
+    badge: null,
+    features: [
+      'Acceso ilimitado a zonas de Fuerza & Halterofilia',
+      'Acceso a zona cardiovascular y turf de aceleración',
+      'App de registro de cargas y telemetría de progresos',
+      'Vestidores boutique con toalla y lockers digitales',
+      '1 pase de invitado de cortesía al mes',
+      'Cero permanencia forzada (cancela en 1 clic)',
+    ],
+    ctaText: 'Elegir Plan Standard',
+    whatsappMessage: 'Hola, me interesa inscribirme al Plan Standard Athlete en IS1998.',
+  },
+  {
+    id: 'pro',
+    name: 'Pro Performance',
+    tagline: 'Nuestra membresía insignia. Clases ilimitadas, métricas corporales y máxima progresión.',
+    monthlyPrice: 139,
+    quarterlyPrice: 111,
+    popular: true,
+    badge: 'MÁS ELEGIDO · RECOMENDADO',
+    features: [
+      'Todo lo incluido en el Plan Standard',
+      'Acceso ilimitado a clases grupales (Cycling, Hyrox, HIIT, Mobility)',
+      'Evaluación antropométrica InBody 770 trimestral con bioimpedancia',
+      'Reserva anticipada de franja horaria (72 horas antes)',
+      'Acceso completo a Sauna Finlandés post-entreno',
+      '15% de descuento en cafetería de especialidad y suplementos',
+      '2 pases de invitado de cortesía al mes',
+    ],
+    ctaText: 'Comenzar Pro Performance',
+    whatsappMessage: 'Hola, deseo inscribirme al plan destacado Pro Performance en IS1998.',
+  },
+  {
+    id: 'elite',
+    name: 'Elite Coaching',
+    tagline: 'La experiencia boutique definitiva con acompañamiento profesional continuo.',
+    monthlyPrice: 229,
+    quarterlyPrice: 183,
+    popular: false,
+    badge: 'EXPERIENCIA PRIVADA',
+    features: [
+      'Todo lo incluido en Pro Performance',
+      '4 sesiones mensuales 1-a-1 con Head Coach CSCS® asignado',
+      'Plan nutricional deportivo personalizado + revisión mensual',
+      'Acceso ilimitado a Zona Wellness (Sauna 90°C + Crioterapia 3°C)',
+      'Taquilla privada asignada y servicio de lavandería de indumentaria',
+      'Kit de bienvenida oficial IS1998 (Mochila, Shaker térmico, Straps Eleiko)',
+      'Acceso VIP a workshops y seminarios técnicos',
+    ],
+    ctaText: 'Solicitar Membresía Elite',
+    whatsappMessage: 'Hola, deseo postular a la membresía Elite Coaching con atención personalizada.',
+  },
+];
+---
+
+<section id="membresias" class="py-24 bg-brand-surface/40 relative border-t border-brand-emerald/25">
+  <!-- Subtle background glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-brand-emerald/15 rounded-full blur-[150px] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-14" data-reveal>
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white uppercase tracking-tight leading-tight mb-4">
+        Elige Tu Plan. <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-volt to-emerald-400">Desata Tu Máximo Rendimiento.</span>
+      </h2>
+      <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+        Entrena en un espacio exclusivo con biomecánica de clase mundial y resultados medibles. Sin contratos de permanencia forzada.
+      </p>
+
+      <!-- Billing Toggle Switch -->
+      <div class="mt-8 inline-flex items-center p-1.5 rounded-xl bg-brand-dark border border-brand-emerald/60 shadow-lg">
+        <button
+          type="button"
+          id="billing-monthly"
+          class="billing-btn active px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 text-brand-dark bg-brand-volt shadow-sm transform active:scale-95 cursor-pointer"
+          data-billing="monthly"
+        >
+          Facturación Mensual
+        </button>
+        <button
+          type="button"
+          id="billing-quarterly"
+          class="billing-btn px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 text-zinc-400 hover:text-white flex items-center gap-2 transform active:scale-95 cursor-pointer"
+          data-billing="quarterly"
+        >
+          <span>Trimestral / Anual</span>
+          <span class="text-[10px] font-black font-mono px-2 py-0.5 rounded bg-brand-emerald text-brand-volt border border-brand-emerald">
+            -20% OFF
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pricing Cards Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      {plans.map((plan, idx) => (
+        <div
+          class={`relative rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1.5 ${
+            plan.popular
+              ? 'bg-brand-surface border-2 border-brand-volt shadow-volt-glow lg:-translate-y-2 hover:shadow-volt-glow-lg'
+              : 'bg-brand-surface/90 border border-brand-emerald/40 hover:border-brand-emerald/80 hover:shadow-xl'
+          }`}
+          data-reveal
+          data-reveal-delay={idx * 100}
+        >
+          <!-- Top Tag Badge for Popular Plan -->
+          {plan.badge && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
+              <span class={`inline-flex items-center gap-1.5 px-4 py-1 rounded-full text-[11px] font-mono font-black tracking-wider uppercase shadow-md ${
+                plan.popular ? 'bg-brand-volt text-brand-dark' : 'bg-brand-dark text-brand-volt border border-brand-emerald'
+              }`}>
+                {plan.popular && <Flame class="w-3.5 h-3.5 fill-current" />}
+                {plan.badge}
+              </span>
+            </div>
+          )}
+
+          <div class="p-8 flex-1 flex flex-col">
+            <!-- Plan Header -->
+            <div class="mb-6">
+              <h3 class="font-display font-extrabold text-2xl text-white uppercase tracking-tight">
+                {plan.name}
+              </h3>
+              <p class="text-xs text-zinc-400 mt-2 min-h-[36px] leading-relaxed">
+                {plan.tagline}
+              </p>
+            </div>
+
+            <!-- Price Display with Live Toggle Support -->
+            <div class="pb-6 mb-6 border-b border-zinc-800 flex items-baseline gap-1">
+              <span class="text-xs font-mono text-zinc-400 align-top mr-1 font-semibold">$</span>
+              <span
+                class="font-display font-black text-5xl text-white tracking-tight plan-price"
+                data-monthly={plan.monthlyPrice}
+                data-quarterly={plan.quarterlyPrice}
+              >
+                {plan.monthlyPrice}
+              </span>
+              <div class="flex flex-col ml-2">
+                <span class="text-xs font-mono text-zinc-400 font-semibold uppercase">USD / Mes</span>
+                <span class="text-[10px] font-mono text-emerald-400 billing-period-label">Facturado mensual</span>
+              </div>
+            </div>
+
+            <!-- Feature Checklist -->
+            <div class="space-y-3.5 mb-8 flex-1">
+              <p class="text-xs font-mono text-zinc-400 uppercase tracking-wider font-semibold">Beneficios incluidos:</p>
+              {plan.features.map((feat) => (
+                <div class="flex items-start gap-3 text-xs text-zinc-200">
+                  <div class={`p-0.5 rounded-full mt-0.5 flex-shrink-0 ${plan.popular ? 'bg-brand-volt/20 text-brand-volt' : 'bg-brand-emerald/40 text-brand-volt'}`}>
+                    <Check class="w-3.5 h-3.5" />
+                  </div>
+                  <span class="leading-relaxed">{feat}</span>
+                </div>
+              ))}
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pt-4 flex flex-col gap-3">
+              <a
+                href={`https://wa.me/51999999999?text=${encodeURIComponent(plan.whatsappMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-lg text-xs font-black uppercase tracking-wider transition-all duration-300 transform active:scale-[0.98] ${
+                  plan.popular
+                    ? 'bg-brand-volt text-brand-dark hover:bg-white hover:shadow-volt-glow'
+                    : 'bg-brand-dark text-white border border-brand-emerald/80 hover:border-brand-volt hover:text-brand-volt'
+                }`}
+              >
+                <span>{plan.ctaText}</span>
+                <ArrowRight class="w-4 h-4" />
+              </a>
+
+              <a
+                href="#pase-gratis"
+                data-open-pass-modal
+                class="text-center text-[11px] font-mono text-zinc-400 hover:text-brand-volt transition-colors py-1"
+              >
+                o solicita primero tu Pase de 1 Día Gratis →
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Bottom subtle accent -->
+          <div class={`h-1.5 w-full rounded-b-2xl ${plan.popular ? 'bg-brand-volt' : 'bg-brand-emerald/40'}`}></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Reassurance Banner -->
+    <div class="mt-14 p-6 rounded-2xl bg-brand-surface border border-brand-emerald/40 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-brand-emerald/40 border border-brand-emerald flex items-center justify-center flex-shrink-0 text-brand-volt">
+          <ShieldCheck class="w-6 h-6" />
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Garantía Incondicional de 15 Días IS1998</h4>
+          <p class="text-xs text-zinc-300 mt-0.5">Si dentro de tus primeras dos semanas no estás 100% satisfecho con las instalaciones y el ambiente, te devolvemos la totalidad de tu cuota en 24h.</p>
+        </div>
+      </div>
+      <div class="flex-shrink-0">
+        <span class="inline-flex items-center gap-2 text-xs font-mono text-zinc-300 bg-brand-dark px-4 py-2 rounded-lg border border-zinc-800">
+          <span class="w-2 h-2 rounded-full bg-brand-volt"></span>
+          Sin permanencias ni letra chica
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const monthlyBtn = document.getElementById('billing-monthly');
+  const quarterlyBtn = document.getElementById('billing-quarterly');
+  const priceElements = document.querySelectorAll('.plan-price');
+  const periodLabels = document.querySelectorAll('.billing-period-label');
+
+  function setBilling(isQuarterly: boolean) {
+    if (!monthlyBtn || !quarterlyBtn) return;
+
+    if (isQuarterly) {
+      quarterlyBtn.classList.add('bg-brand-volt', 'text-brand-dark', 'shadow-sm');
+      quarterlyBtn.classList.remove('text-zinc-400');
+      monthlyBtn.classList.remove('bg-brand-volt', 'text-brand-dark', 'shadow-sm');
+      monthlyBtn.classList.add('text-zinc-400');
+
+      priceElements.forEach((el) => {
+        const qPrice = el.getAttribute('data-quarterly');
+        if (qPrice) el.textContent = qPrice;
+      });
+
+      periodLabels.forEach((label) => {
+        label.textContent = 'Facturado trimestral (-20%)';
+      });
+    } else {
+      monthlyBtn.classList.add('bg-brand-volt', 'text-brand-dark', 'shadow-sm');
+      monthlyBtn.classList.remove('text-zinc-400');
+      quarterlyBtn.classList.remove('bg-brand-volt', 'text-brand-dark', 'shadow-sm');
+      quarterlyBtn.classList.add('text-zinc-400');
+
+      priceElements.forEach((el) => {
+        const mPrice = el.getAttribute('data-monthly');
+        if (mPrice) el.textContent = mPrice;
+      });
+
+      periodLabels.forEach((label) => {
+        label.textContent = 'Facturado mensual';
+      });
+    }
+  }
+
+  monthlyBtn?.addEventListener('click', () => setBilling(false));
+  quarterlyBtn?.addEventListener('click', () => setBilling(true));
+</script>

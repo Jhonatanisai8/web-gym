@@ -1,0 +1,132 @@
+---
+import { Star, Quote, Award } from 'lucide-astro';
+
+const testimonials = [
+  {
+    name: 'Carlos Mendoza',
+    role: 'Socio hace 14 meses · Abogado Corporativo',
+    quote: 'En los gimnasios tradicionales pasaba 20 minutos esperando que se desocupara un rack a las 7:00 PM. En IS1998 entreno con fluidez absoluta. Las barras Eleiko y el aforo controlado valen cada centavo.',
+    avatar: '/images/avatar-carlos.webp',
+  },
+  {
+    name: 'Dra. Valeria Santos',
+    role: 'Socia hace 8 meses · Médico Cirujana',
+    quote: 'Mis turnos de quirófano exigen una resistencia física brutal. La combinación de entrenamiento de fuerza guiado y el sauna finlandés con agua helada a 3°C revolucionó mis niveles de energía y sueño profundo.',
+    avatar: '/images/avatar-valeria.webp',
+  },
+  {
+    name: 'Diego Arismendi',
+    role: 'Socio hace 18 meses · Maratonista & Hyrox',
+    quote: 'El turf de 30 metros, los trineos Torque y los SkiErg te ponen en un nivel competitivo real. Los entrenadores no son monitores de pasillo; son entrenadores que dominan la fisiología del esfuerzo.',
+    avatar: '/images/avatar-diego.webp',
+  },
+];
+---
+
+<section id="testimonios" class="py-24 bg-brand-surface/30 relative border-t border-brand-emerald/25">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header (Centered) -->
+    <div class="text-center max-w-3xl mx-auto mb-16" data-reveal>
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white uppercase tracking-tight leading-tight mb-4">
+        Métricas Reales. <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-volt to-emerald-400">Atletas Reales.</span>
+      </h2>
+      <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+        Nuestros miembros no buscan poses para redes sociales. Buscan longevidad articular, potencia atlética y un espacio libre de interrupciones.
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      {testimonials.map((item, idx) => (
+        <div
+          class="p-8 rounded-2xl bg-brand-surface border border-brand-emerald/40 hover:border-brand-emerald/80 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between relative group"
+          data-reveal
+          data-reveal-delay={idx * 100}
+        >
+          <div>
+            <!-- 5 Rating Stars -->
+            <div class="flex items-center gap-1 text-brand-volt mb-6">
+              <Star class="w-4 h-4 fill-current" />
+              <Star class="w-4 h-4 fill-current" />
+              <Star class="w-4 h-4 fill-current" />
+              <Star class="w-4 h-4 fill-current" />
+              <Star class="w-4 h-4 fill-current" />
+            </div>
+
+            <!-- Quote Text -->
+            <div class="relative mb-6">
+              <Quote class="w-8 h-8 text-brand-emerald/60 absolute -top-3 -left-2 -z-0 opacity-40" />
+              <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed relative z-10 italic">
+                "{item.quote}"
+              </p>
+            </div>
+          </div>
+
+          <!-- User Info Row -->
+          <div class="pt-4 border-t border-zinc-800 flex items-center gap-3">
+            <img
+              src={item.avatar}
+              alt={item.name}
+              class="w-11 h-11 rounded-full object-cover border-2 border-brand-emerald/60"
+              loading="lazy"
+              width="44"
+              height="44"
+            />
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-white tracking-wide">{item.name}</span>
+              <span class="text-[11px] text-zinc-400 font-mono">{item.role}</span>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Comprehensive Trust & Guarantee Banner -->
+    <div
+      class="rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-brand-surface via-brand-dark to-brand-surface border-2 border-brand-emerald/80 relative overflow-hidden shadow-2xl"
+      data-reveal
+    >
+      <!-- Glow accent -->
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-volt/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        
+        <div class="lg:col-span-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-emerald/40 border border-brand-emerald text-xs font-mono font-bold text-brand-volt uppercase tracking-wider mb-4">
+            <Award class="w-4 h-4" />
+            COMPROMISO TOTAL IS1998
+          </div>
+          <h3 class="font-display font-black text-2xl sm:text-4xl text-white uppercase tracking-tight leading-snug mb-3">
+            Sin Contratos de Permanencia Forzada. <br />
+            <span class="text-brand-volt">Sin Letra Chica. 100% Sin Riesgo.</span>
+          </h3>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Creemos que la excelencia de nuestras instalaciones y el trato de nuestro equipo deben ser la única razón para que te quedes. Por eso puedes pausar o cancelar en cualquier momento sin penalizaciones, y cuentas con nuestra garantía de reembolso total los primeros 15 días.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
+          <a
+            href="#pase-gratis"
+            data-open-pass-modal
+            class="inline-flex items-center justify-center gap-2 px-6 py-4 bg-brand-volt text-brand-dark rounded-xl font-black text-xs uppercase tracking-wider hover:bg-white hover:shadow-volt-glow transition-all"
+          >
+            <span>Probar 1 Día Gratis Sin Compromiso</span>
+          </a>
+          <a
+            href="https://wa.me/51999999999?text=Hola,%20quisiera%20conocer%20m%C3%A1s%20sobre%20la%20garant%C3%ADa%20y%20membres%C3%ADas%20de%20IS1998"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-6 py-4 bg-brand-dark border border-brand-emerald text-zinc-300 rounded-xl font-bold text-xs uppercase tracking-wider hover:text-white hover:border-brand-volt transition-all"
+          >
+            <span>Consultar por WhatsApp</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
